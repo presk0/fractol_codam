@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2024/11/18 22:17:25 by nidionis         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:53:48 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	main(int argc, char *argv[])
 		help_msg();
 	else
 	{
-		// MLX allows you to define its core behaviour before startup.
 		mlx_set_setting(MLX_MAXIMIZED, true);
 		mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "fractol", true);
 		if (!mlx)
@@ -51,22 +50,15 @@ int	main(int argc, char *argv[])
 			ft_errmsg("mlx_init crashed\n");
 			return (-1);
 		}
-
-		/* Do stuff */
-
-		// Create and display the image.
 		mlx_image_t* img = mlx_new_image(mlx, 256, 256);
 		if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
 		{
 			ft_errmsg("mlx_new_image crashed\n");
 			return (-1);
 		}
-
-		// Even after the image is being displayed, we can still modify the buffer.
+		    // Set the channels of each pixel in our image to the maximum byte value of 255.
+    ft_memset(img->pixels, 255, img->width * img->height * BPP);
 		mlx_put_pixel(img, 0, 0, 0xFF0000FF);
-
-		// Register a hook and pass mlx as an optional param.
-		// NOTE: Do this before calling mlx_loop!
 		mlx_loop_hook(mlx, ft_hook, mlx);
 		mlx_loop(mlx);
 		mlx_terminate(mlx);

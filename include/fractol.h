@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:19:05 by supersko          #+#    #+#             */
-/*   Updated: 2024/11/18 22:22:58 by nidionis         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:20:16 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include <MLX42/MLX42.h>
 # define WIDTH 256
 # define HEIGHT 256
+# define BPP sizeof(int32_t)
 
 typedef struct s_pix
 {
