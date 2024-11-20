@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:19:05 by supersko          #+#    #+#             */
-/*   Updated: 2024/11/19 15:20:16 by nidionis         ###   ########.fr       */
+/*   Updated: 2024/11/20 14:43:49 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,12 @@ typedef struct s_pt
 	double	y;
 }	t_pt;
 
-typedef struct s_mlx
-{
-	void*		window;
-	void*		context;
-	int32_t		width;
-	int32_t		height;
-	double		delta_time;
-}	t_mlx;
+typedef mlx_t t_mlx;
 
 typedef struct s_data
 {
-	t_mlx	mlx;
+	t_mlx		*mlx;
+	mlx_image_t	*img;
 }	t_data;
 
 #endif
