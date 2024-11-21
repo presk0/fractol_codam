@@ -6,11 +6,28 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2024/11/20 15:10:37 by nidionis         ###   ########.fr       */
+/*   Updated: 2024/11/21 12:08:23 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fractol.h>
+
+int get_rgba(int r, int g, int b, int a)
+{
+    return (r << 24 | g << 16 | b << 8 | a);
+}
+
+void	set_complex(t_complex *z, double r, double i)
+{
+	z->r = r;
+	z->i = i;
+}
+
+void	set_pix(t_pix *pix, int x, int y)
+{
+	pix->x = x;
+	pix->y = y;
+}
 
 static void	help_msg(void)
 {
@@ -24,52 +41,180 @@ static void	help_msg(void)
 		z     : Is it an available bonus ?\n");
 }
 
+int	complex_module(t_complex z)
+{
+	return (sqrt(z.r * z.r + z.i * z.i));
+}
+/*
+t_complex	pix_to_complex(t_pix pix)
+{
+	t_complex	z;
+
+	z.r = pix.x;
+	z.i = pix.y;
+	return (z);
+}
+*/
+t_complex	complex_scale(t_complex z1, double scale)
+{
+	t_complex	scaled;
+
+	set_complex(&scaled, 0, 0);
+	if (scale)
+	{
+		scaled.r = z1.r / scale;
+		scaled.i = z1.i / scale;
+	}
+	else
+		ft_errmsg("[complex_scale] cannot divide by 0\n");
+	return (scaled);
+}
+
+t_complex	complex_sum(t_complex z1, t_complex z2)
+{
+	t_complex	sum;
+
+	sum.r = z1.r + z2.r;
+	sum.i = z1.i + z2.i;
+	return (sum);
+}
+/*
+t_complex	complex_square(t_complex complex_nb)
+{
+	t_complex	sq_nb;
+
+	sq_nb.r = pow(complex_nb.r, 2) - pow(complex_nb.i, 2);
+	sq_nb.i = 2 * complex_nb.r * complex_nb.i;
+	return (sq_nb);
+}
+*/
+
 static void ft_hook(void* param)
 {
 	const t_mlx* mlx = param;
+	(void)mlx;
 
-	printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height);
+	//printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height);
 }
 
-int get_rgba(int r, int g, int b, int a)
-{
-    return (r << 24 | g << 16 | b << 8 | a);
-}
-
-void	init_pix(t_pix *pix, int x, int y)
-{
-	pix->x = x;
-	pix->y = y;
-}
-
-void	orthonormal(t_data *data, t_pix *i)
+void	orthonormal(t_data *data, t_pix *i, int color)
 {
 	int	black;
-	int	white;
 
-	white = get_rgba(255, 255, 255, 255);
-	black = get_rgba(0, 100, 0, 0);
+	black = get_rgba(0, 0, 0, 0);
 	if (i->x == HEIGHT / 2 || i->y == WIDTH / 2)
-		mlx_put_pixel(data->img, i->y, i->x, white);
+		mlx_put_pixel(data->img, i->y, i->x, color);
 	else
 		mlx_put_pixel(data->img, i->y, i->x, black);
 }
 
-void	prepare_next_frame(t_data *data, void (*f)(t_data *data, t_pix *i))
+unsigned	complex_square_module(t_complex p)
+{
+	return (p.r * p.r + p.i * p.i);
+}
+
+int	julia_iter(t_data *data, t_complex p)
+{
+	int			iter_max;
+    int 		iter;
+	double		tmp;
+	t_complex	coef;
+
+	iter = 0;
+	coef = data->param.julia_coef;
+	iter_max = data->param.iter_max;
+    while (complex_square_module(p) <= 4 && iter < iter_max)
+	{
+        tmp = p.r * p.r - p.i * p.i + coef.r;
+        p.i = 2 * p.r * p.i + coef.i;
+        p.r = tmp;
+        iter++;
+    }
+    return (iter);
+}
+
+t_complex	pixel_to_complex(t_data *data, t_pix p)
+{
+	t_complex	z;
+	double		numerator;
+	double		denominator;
+
+	numerator = p.x - (double)WIDTH / 2.0;
+	denominator = data->param.zoom * (double)WIDTH / 2.0;
+    z.r = numerator / denominator + data->param.offset.x;
+	numerator = p.y - (double)HEIGHT / 2.0;
+	denominator = data->param.zoom * (double)HEIGHT / 2.0;
+    z.i = numerator / denominator + data->param.offset.y;
+	return (z);
+}
+/*
+int get_color(int iter) {
+    return (iter == DEFAULT_ITER_MAX) ? 0x000000 : (0xFFFFFF / DEFAULT_ITER_MAX) * iter;
+}
+*/
+int get_color(int iter) {
+    if (iter == DEFAULT_ITER_MAX)
+        return 0x000000; // Black for points inside the set
+
+    // Gradient calculation
+    double t = (double)iter / DEFAULT_ITER_MAX;
+    int r = (int)(9 * (1 - t) * t * t * t * 255);
+    int g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+    int b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+
+    return (r << 16) | (g << 8) | b; // Combine RGB
+}
+
+void draw_pixel(t_data *data, t_pix pix, int color) {
+    mlx_put_pixel(data->img, pix.y, pix.x, color);
+}
+
+void render_julia(t_data *data, t_pix pix) {
+	t_complex c = pixel_to_complex(data, pix);
+	int iter = julia_iter(data, c);
+	int color = get_color(iter);
+	draw_pixel(data, pix, color);
+}
+
+void	julia(t_data *data, t_pix *i, int color)
+{
+	int			count;
+	int			iter_max;
+	int			module;
+	t_complex	i_nb;
+	(void)color;
+
+	iter_max = data->param.iter_max;
+	count = 0;
+	i_nb = pixel_to_complex(data, *i);
+	module = julia_iter(data, i_nb);
+	mlx_put_pixel(data->img, i->y, i->x, module);
+}
+
+void	prepare_next_frame(t_data *data, void (*f)(t_data *data, t_pix i))
 {
 	t_pix	i;
 	
-	init_pix(&i, 0, 0);
+	set_pix(&i, 0, 0);
 	while (i.x < WIDTH)
 	{
 		i.y = 0;
 		while (i.y < HEIGHT)
 		{
-			f(data, &i);
+			f(data, i);
 			(i.y)++;
 		}
 		(i.x)++;
 	}
+}
+
+void	init_data(t_data *data)
+{
+	set_complex(&data->param.julia_coef, -0.7, 0.27015);
+	data->param.iter_max = DEFAULT_ITER_MAX;
+	data->param.zoom = 1;
+	data->param.offset.x = 0;
+	data->param.offset.y = 0;
 }
 
 int	main(int argc, char *argv[])
@@ -92,6 +237,7 @@ int	main(int argc, char *argv[])
 			ft_errmsg("mlx_init crashed\n");
 			return (-1);
 		}
+		init_data(&data);
 		data.img = mlx_new_image(data.mlx, WIDTH, HEIGHT);
 		if (!data.img || (mlx_image_to_window(data.mlx, data.img, 0, 0) < 0))
 		{
@@ -99,9 +245,8 @@ int	main(int argc, char *argv[])
 			mlx_terminate(data.mlx);
 			return (-1);
 		}
-		//mlx_put_pixel(data.img, 0, 0, 0xAF0000FF);
-		prepare_next_frame(&data, orthonormal);
-		    // Draw the image at coordinate (0, 0).
+		prepare_next_frame(&data, render_julia);
+		// Draw the image at coordinate (0, 0).
 		mlx_image_to_window(data.mlx, data.img, 0, 0);
 		mlx_loop_hook(data.mlx, ft_hook, data.mlx);
 		mlx_loop(data.mlx);
