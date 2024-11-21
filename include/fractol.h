@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:19:05 by supersko          #+#    #+#             */
-/*   Updated: 2024/11/20 22:04:01 by nidionis         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:37:59 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
 # include <stdint.h>
 # include <libft.h>
 # include <MLX42/MLX42.h>
-# define WIDTH 256
-# define HEIGHT 256
+# define ZOOM_STEP 0.1
+# define WIDTH 1024
+# define HEIGHT 1024
 # define DEFAULT_ITER_MAX 256
 # define GREEN get_rgba(0, 255, 0, 255)
 # define BLUE get_rgba(0, 0, 255, 255)
@@ -61,7 +62,7 @@ typedef struct s_param
 {
 	int			iter_max;
 	t_complex	julia_coef;
-	int			zoom;
+	double		zoom;
 	t_pix		offset;
 }	t_param;
 

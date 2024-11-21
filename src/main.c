@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2024/11/21 12:08:23 by nidionis         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:50:38 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,7 @@ int	complex_module(t_complex z)
 {
 	return (sqrt(z.r * z.r + z.i * z.i));
 }
-/*
-t_complex	pix_to_complex(t_pix pix)
-{
-	t_complex	z;
 
-	z.r = pix.x;
-	z.i = pix.y;
-	return (z);
-}
-*/
 t_complex	complex_scale(t_complex z1, double scale)
 {
 	t_complex	scaled;
@@ -78,16 +69,6 @@ t_complex	complex_sum(t_complex z1, t_complex z2)
 	sum.i = z1.i + z2.i;
 	return (sum);
 }
-/*
-t_complex	complex_square(t_complex complex_nb)
-{
-	t_complex	sq_nb;
-
-	sq_nb.r = pow(complex_nb.r, 2) - pow(complex_nb.i, 2);
-	sq_nb.i = 2 * complex_nb.r * complex_nb.i;
-	return (sq_nb);
-}
-*/
 
 static void ft_hook(void* param)
 {
@@ -96,7 +77,7 @@ static void ft_hook(void* param)
 
 	//printf("WIDTH: %d | HEIGHT: %d\n", mlx->width, mlx->height);
 }
-
+/*
 void	orthonormal(t_data *data, t_pix *i, int color)
 {
 	int	black;
@@ -107,7 +88,7 @@ void	orthonormal(t_data *data, t_pix *i, int color)
 	else
 		mlx_put_pixel(data->img, i->y, i->x, black);
 }
-
+*/
 unsigned	complex_square_module(t_complex p)
 {
 	return (p.r * p.r + p.i * p.i);
@@ -147,22 +128,15 @@ t_complex	pixel_to_complex(t_data *data, t_pix p)
     z.i = numerator / denominator + data->param.offset.y;
 	return (z);
 }
-/*
-int get_color(int iter) {
-    return (iter == DEFAULT_ITER_MAX) ? 0x000000 : (0xFFFFFF / DEFAULT_ITER_MAX) * iter;
-}
-*/
+
 int get_color(int iter) {
     if (iter == DEFAULT_ITER_MAX)
-        return 0x000000; // Black for points inside the set
-
-    // Gradient calculation
+        return 0x000000;
     double t = (double)iter / DEFAULT_ITER_MAX;
     int r = (int)(9 * (1 - t) * t * t * t * 255);
     int g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
     int b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
-
-    return (r << 16) | (g << 8) | b; // Combine RGB
+    return (r << 16) | (g << 8) | b;
 }
 
 void draw_pixel(t_data *data, t_pix pix, int color) {
@@ -217,6 +191,22 @@ void	init_data(t_data *data)
 	data->param.offset.y = 0;
 }
 
+void my_scrollhook(double xdelta, double ydelta, void *data)
+{
+	t_param	*p;
+	t_data	*d;
+
+	d = data;
+	(void)xdelta;
+	p = &(((t_data *)data)->param);
+	if (ydelta > 0)
+		p->zoom += ZOOM_STEP;
+	else if (ydelta < 0)
+		p->zoom -= ZOOM_STEP;
+	prepare_next_frame(data, render_julia);
+	mlx_image_to_window(d->mlx, d->img, 0, 0);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_data	data;
@@ -230,7 +220,6 @@ int	main(int argc, char *argv[])
 		help_msg();
 	else
 	{
-		//mlx_set_setting(MLX_MAXIMIZED, true);
 		data.mlx = mlx_init(WIDTH, HEIGHT, "fractol", true);
 		if (!data.mlx)
 		{
@@ -246,9 +235,9 @@ int	main(int argc, char *argv[])
 			return (-1);
 		}
 		prepare_next_frame(&data, render_julia);
-		// Draw the image at coordinate (0, 0).
 		mlx_image_to_window(data.mlx, data.img, 0, 0);
 		mlx_loop_hook(data.mlx, ft_hook, data.mlx);
+		mlx_scroll_hook(data.mlx, &my_scrollhook, &data);
 		mlx_loop(data.mlx);
 		mlx_terminate(data.mlx);
 	}
