@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:24:29 by supersko          #+#    #+#             */
-/*   Updated: 2024/11/21 20:30:59 by nidionis         ###   ########.fr       */
+/*   Updated: 2024/11/23 17:58:42 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,16 +114,6 @@ t_complex	pixel_to_complex(t_data *data, t_pix p)
 	return (z);
 }
 
-int julia_multicolor(int iter) {
-    if (iter == DEFAULT_ITER_MAX)
-        return 0x000000;
-    double t = (double)iter / DEFAULT_ITER_MAX;
-    int r = (int)(9 * (1 - t) * t * t * t * 255);
-    int g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
-    int b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
-    return (r << 16) | (g << 8) | b;
-}
-
 void draw_pixel(t_data *data, t_pix pix, int color) {
     if (!data || !data->img || !data->mlx) {
         fprintf(stderr, "Error: Invalid data or uninitialized structures\n");
@@ -145,17 +135,69 @@ void draw_pixel(t_data *data, t_pix pix, int color) {
 }
 */
 
+int julia_multicolor1(int iter) {
+    if (iter == DEFAULT_ITER_MAX)
+        return 0x000000;
+    double t = (double)iter / DEFAULT_ITER_MAX;
+    int r = (int)(9 * (1 - t) * t * t * t * 255);
+    int g = (int)(15 * (1 - t) * (1 - t) * t * t * 255);
+    int b = (int)(8.5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+    return (r << 16) | (g << 8) | b;
+}
+
+int julia_multicolor2(int iter) {
+    if (iter == DEFAULT_ITER_MAX)
+        return 0x000000;
+    double t = (double)iter / DEFAULT_ITER_MAX;
+    int r = (int)(15 * (1 - t) * t * t * t * 255);
+    int g = (int)(1 * (1 - t) * (1 - t) * t * t * 255);
+    int b = (int)(5 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+    return (r << 16) | (g << 8) | b;
+}
+
+int julia_multicolor3(int iter) {
+    if (iter == DEFAULT_ITER_MAX)
+        return 0x000000;
+    double t = (double)iter / DEFAULT_ITER_MAX;
+    int r = (int)(t);
+    int g = (int)(0 * (1 - t) * (1 - t) * t * t * 255);
+    int b = (int)(0 * (1 - t) * (1 - t) * (1 - t) * t * 255);
+    return (r << 16) | (g << 8) | b;
+}
+
 void render_julia(t_data *data, t_pix pix) {
+	t_param *p;
+
+	p = data->param;
 	t_complex c = pixel_to_complex(data, pix);
 	int iter = julia_iter(data, c);
-	int color = julia_multicolor(iter);
+	int color = p->f_color(iter);
 	draw_pixel(data, pix, color);
 }
 
-void	prepare_next_frame(t_data *data, void (*f)(t_data *data, t_pix i))
+int	bonus_iter(t_data *data, t_complex c)
+{
+	(void)data;
+	(void)c;
+return 0;	
+}
+
+void render_bonus(t_data *data, t_pix pix) {
+	t_param *p;
+
+	p = data->param;
+	t_complex c = pixel_to_complex(data, pix);
+	int iter = bonus_iter(data, c);
+	int color = p->f_color(iter);
+	draw_pixel(data, pix, color);
+}
+
+void	prepare_next_frame(t_data *data)
 {
 	t_pix	i;
+	void	(*f)(t_data *, t_pix i);
 	
+	f = data->param->f_fract;
 	set_pix(&i, 0, 0);
 	while (i.x < (int)data->mlx->width)
 	{
@@ -172,11 +214,12 @@ void	prepare_next_frame(t_data *data, void (*f)(t_data *data, t_pix i))
 void	init_data(t_data *data)
 {
 	data->param = malloc(sizeof(t_param));
-	set_complex(&data->param->julia_coef, -0.7, 0.27015);
+	set_complex(&data->param->julia_coef, 0, 0);
 	data->param->iter_max = DEFAULT_ITER_MAX;
 	data->param->zoom = 1;
 	data->param->offset.x = 0;
 	data->param->offset.y = 0;
+	data->param->f_color = julia_multicolor3;
 	mlx_set_window_limit(data->mlx, 1, 1, WIDTH, HEIGHT);
 }
 
@@ -219,17 +262,39 @@ void resize_win(int width, int height, void *data)
 
 void	my_keyhook(mlx_key_data_t keydata, void *data)
 {
-	(void)data;
-	(void)keydata;
-	//printf("keydata.key = %i\n", keydata.key);
-	//printf("keydata.action = %i\n", keydata.action);
-	//printf("keydata.os_key = %i\n", keydata.os_key);
-	//printf("keydata.modifier = %i\n", keydata.modifier);
+	t_data	*d;
+
+	d = (t_data *)data;
+	if (keydata.key == KEY_ESC)
+		mlx_terminate(((t_data *)data)->mlx);
+	if (keydata.key == KEY_Q && d->param->iter_max + QUALITY_STEP > 0)
+		d->param->iter_max += QUALITY_STEP;
+	if (keydata.key == KEY_A && d->param->iter_max + QUALITY_STEP > 0)
+		d->param->iter_max -= QUALITY_STEP;
+	if (keydata.key == KEY_E)
+	{
+		d->param->julia_coef.r += JULIA_COEF_R_STEP;
+		if (complex_module(d->param->julia_coef) > 2)
+			d->param->julia_coef.r -= JULIA_COEF_R_STEP;
+	}
+	if (keydata.key == KEY_D)
+	{
+		d->param->julia_coef.r -= JULIA_COEF_R_STEP;
+		if (complex_module(d->param->julia_coef) > 2)
+			d->param->julia_coef.r += JULIA_COEF_R_STEP;
+	}
+	if (keydata.key == KEY_D)
+	{
+		d->param->julia_coef.r -= JULIA_COEF_R_STEP;
+		if (complex_module(d->param->julia_coef) > 2)
+			d->param->julia_coef.r += JULIA_COEF_R_STEP;
+	}
+	loops(data);
 }
 
 int	loops(t_data *data)
 {
-	prepare_next_frame(data, data->param->f);
+	prepare_next_frame(data);
 	if (mlx_image_to_window(data->mlx, data->img, 0, 0) == -1)
 	{
 		mlx_close_window(data->mlx);
@@ -264,7 +329,7 @@ int	main(int argc, char *argv[])
 			return (EXIT_FAILURE);
 		}
 		init_data(&data);
-		data.param->f = &render_julia;
+		data.param->f_fract = &render_julia;
 		data.img = mlx_new_image(data.mlx, WIDTH, HEIGHT);
 		if (!data.img || (mlx_image_to_window(data.mlx, data.img, 0, 0) < 0))
 		{
@@ -275,6 +340,7 @@ int	main(int argc, char *argv[])
 		if (loops(&data) == EXIT_FAILURE)
 			return (EXIT_FAILURE);
 	}
+	mlx_terminate(data.mlx);
 	free(data.param);
 	return (0);
 }

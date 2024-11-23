@@ -1,0 +1,142 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/nidionis/fractol/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+${NAME}	lib/libft/Makefile	/^${NAME}: ${OBJS}$/;"	t
+%.o	lib/libft/Makefile	/^%.o: %.c$/;"	t
+**Found a bug?**	lib/MLX42/CONTRIBUTING.md	/^## **Found a bug?**$/;"	s	chapter:How to contribute to MLX42
+1. Warning	lib/MLX42/CODE_OF_CONDUCT.md	/^### 1. Warning$/;"	S	section:Contributor Covenant Code of Conduct""Enforcement Guidelines
+2. Temporary Ban	lib/MLX42/CODE_OF_CONDUCT.md	/^### 2. Temporary Ban$/;"	S	section:Contributor Covenant Code of Conduct""Enforcement Guidelines
+3. Permanent Ban	lib/MLX42/CODE_OF_CONDUCT.md	/^### 3. Permanent Ban$/;"	S	section:Contributor Covenant Code of Conduct""Enforcement Guidelines
+Attribution	lib/MLX42/CODE_OF_CONDUCT.md	/^## Attribution$/;"	s	chapter:Contributor Covenant Code of Conduct
+Available Options	lib/MLX42/README.md	/^### Available Options$/;"	S	section:Features ✨""Download and build - MLX42
+BUILD_TESTS	lib/MLX42/CMakeLists.txt	/^set(BUILD_TESTS	OFF CACHE BOOL "Build the tests to verify the integrity of the lib")$/;"	v
+CC	lib/libft/Makefile	/^CC = cc$/;"	m
+CCSHADER	lib/MLX42/CMakeLists.txt	/^    set(CCSHADER ${TOOLS_DIR}\/compile_shader.bat)$/;"	v
+CCSHADER	lib/MLX42/CMakeLists.txt	/^    set(CCSHADER ${TOOLS_DIR}\/compile_shader.sh)$/;"	v
+CFLAGS	lib/libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CMAKE_C_EXTENSIONS	lib/MLX42/CMakeLists.txt	/^set(CMAKE_C_EXTENSIONS OFF)$/;"	v
+CMAKE_C_STANDARD	lib/MLX42/CMakeLists.txt	/^set(CMAKE_C_STANDARD 11)$/;"	v
+CMAKE_C_STANDARD_REQUIRED	lib/MLX42/CMakeLists.txt	/^set(CMAKE_C_STANDARD_REQUIRED ON)$/;"	v
+CMAKE_DIR	lib/MLX42/CMakeLists.txt	/^set(CMAKE_DIR ${CMAKE_CURRENT_SOURCE_DIR}\/cmake)$/;"	v
+CMAKE_POSITION_INDEPENDENT_CODE	lib/MLX42/CMakeLists.txt	/^set(CMAKE_POSITION_INDEPENDENT_CODE ON)$/;"	v
+CMAKE_RUNTIME_OUTPUT_DIRECTORY	lib/MLX42/CMakeLists.txt	/^set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})$/;"	v
+Contributing	lib/MLX42/CONTRIBUTING.md	/^## Contributing$/;"	s	chapter:How to contribute to MLX42
+Contributor Covenant Code of Conduct	lib/MLX42/CODE_OF_CONDUCT.md	/^# Contributor Covenant Code of Conduct$/;"	c
+Cross-Platform 🖥️	lib/MLX42/README.md	/^## Cross-Platform 🖥️$/;"	s	chapter:Features ✨
+DEBUG	lib/MLX42/CMakeLists.txt	/^set(DEBUG		OFF CACHE BOOL "Build MLX42 in debug mode, enabling assertions")$/;"	v
+Documented 📚	lib/MLX42/README.md	/^## Documented 📚$/;"	s	chapter:Features ✨
+Download and build - MLX42	lib/MLX42/README.md	/^## Download and build - MLX42$/;"	s	chapter:Features ✨
+EMSCRIPTEN_VALUE	lib/MLX42/CMakeLists.txt	/^    set(EMSCRIPTEN_VALUE 0)$/;"	v
+EMSCRIPTEN_VALUE	lib/MLX42/CMakeLists.txt	/^    set(EMSCRIPTEN_VALUE 1)$/;"	v
+Emscripten Compatibility 🚀	lib/MLX42/README.md	/^## Emscripten Compatibility 🚀$/;"	s	chapter:Features ✨
+Enforcement	lib/MLX42/CODE_OF_CONDUCT.md	/^## Enforcement$/;"	s	chapter:Contributor Covenant Code of Conduct
+Enforcement Guidelines	lib/MLX42/CODE_OF_CONDUCT.md	/^## Enforcement Guidelines$/;"	s	chapter:Contributor Covenant Code of Conduct
+Enforcement Responsibilities	lib/MLX42/CODE_OF_CONDUCT.md	/^## Enforcement Responsibilities$/;"	s	chapter:Contributor Covenant Code of Conduct
+Example	lib/MLX42/README.md	/^## Example$/;"	s	chapter:Features ✨
+Features ✨	lib/MLX42/README.md	/^# Features ✨$/;"	c
+For Linux:	lib/MLX42/README.md	/^## For Linux:$/;"	s	chapter:Features ✨
+For MacOS:	lib/MLX42/README.md	/^## For MacOS:$/;"	s	chapter:Features ✨
+For Windows (with Windows Subsystem for Linux 2 (WSL2))	lib/MLX42/README.md	/^## For Windows (with Windows Subsystem for Linux 2 (WSL2))$/;"	s	chapter:Features ✨
+For Windows Native:	lib/MLX42/README.md	/^## For Windows Native:$/;"	s	chapter:Features ✨
+GLFW_FETCH	lib/MLX42/CMakeLists.txt	/^set(GLFW_FETCH	ON CACHE BOOL "Clone and install GLFW")$/;"	v
+General compilation	lib/MLX42/README.md	/^### General compilation$/;"	S	section:Features ✨""Installation 🏗️
+Highlights	lib/MLX42/README.md	/^### Highlights$/;"	S	section:Features ✨""Emscripten Compatibility 🚀
+How to contribute to MLX42	lib/MLX42/CONTRIBUTING.md	/^# How to contribute to MLX42$/;"	c
+Installation 🏗️	lib/MLX42/README.md	/^## Installation 🏗️$/;"	s	chapter:Features ✨
+Installing the dependencies	lib/MLX42/README.md	/^### Installing the dependencies$/;"	S	section:Features ✨""For MacOS:
+Installing to the system	lib/MLX42/README.md	/^### Installing to the system$/;"	S	section:Features ✨""Installation 🏗️
+LIBFT_H	lib/libft/libft.h	/^# define LIBFT_H$/;"	d
+MacOS Security:	lib/MLX42/README.md	/^#### MacOS Security:$/;"	t	subsection:Features ✨""For MacOS:""Installing the dependencies
+NAME	lib/libft/Makefile	/^NAME = libft.a$/;"	m
+OBJS	lib/libft/Makefile	/^OBJS = ${SRCS:.c=.o}$/;"	m
+OBJS_BONUS	lib/libft/Makefile	/^OBJS_BONUS = ${SRCS_BONUS:.c=.o}$/;"	m
+Open source && Community driven 🌐	lib/MLX42/README.md	/^## Open source && Community driven 🌐$/;"	s	chapter:Features ✨
+Our Pledge	lib/MLX42/CODE_OF_CONDUCT.md	/^## Our Pledge$/;"	s	chapter:Contributor Covenant Code of Conduct
+Our Standards	lib/MLX42/CODE_OF_CONDUCT.md	/^## Our Standards$/;"	s	chapter:Contributor Covenant Code of Conduct
+Performance 🚀	lib/MLX42/README.md	/^## Performance 🚀$/;"	s	chapter:Features ✨
+Read the wiki for repo codestyle!	lib/MLX42/CONTRIBUTING.md	/^## Read the wiki for repo codestyle!$/;"	s	chapter:How to contribute to MLX42
+Reporting a Vulnerability	lib/MLX42/SECURITY.md	/^## Reporting a Vulnerability$/;"	s	chapter:Security Policy
+SOURCE_DIR	lib/MLX42/CMakeLists.txt	/^set(SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}\/src)$/;"	v
+SRCS	lib/libft/Makefile	/^SRCS = ft_atoi.c ft_bzero.c ft_calloc.c ft_errmsg.c\\$/;"	m
+SRCS_BONUS	lib/libft/Makefile	/^SRCS_BONUS = ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c\\$/;"	m
+Scope	lib/MLX42/CODE_OF_CONDUCT.md	/^## Scope$/;"	s	chapter:Contributor Covenant Code of Conduct
+Security Policy	lib/MLX42/SECURITY.md	/^# Security Policy$/;"	c
+Supported Versions	lib/MLX42/SECURITY.md	/^## Supported Versions$/;"	s	chapter:Security Policy
+TOOLS_DIR	lib/MLX42/CMakeLists.txt	/^set(TOOLS_DIR ${CMAKE_CURRENT_SOURCE_DIR}\/tools)$/;"	v
+Unit tests	lib/MLX42/README.md	/^### Unit tests$/;"	S	section:Features ✨""Installation 🏗️
+Via [Homebrew](https://brew.sh/) / [42Homebrew](https://github.com/kube/42homebrew)	lib/MLX42/README.md	/^#### Via [Homebrew](https:\/\/brew.sh\/) \/ [42Homebrew](https:\/\/github.com\/kube\/42homebrew)$/;"	t	subsection:Features ✨""For MacOS:""Installing the dependencies
+all	lib/libft/Makefile	/^all: ${NAME}$/;"	t
+append_line	lib/libft/ft_split.c	/^static size_t	append_line(char *str, char sep, char **ret, size_t i_wd)$/;"	f	typeref:typename:size_t	file:
+bonus	lib/libft/Makefile	/^bonus: ${OBJS_BONUS} ${NAME}$/;"	t
+clean	lib/libft/Makefile	/^clean:$/;"	t
+content	lib/libft/libft.h	/^	void			*content;$/;"	m	struct:s_list	typeref:typename:void *
+fclean	lib/libft/Makefile	/^fclean: clean$/;"	t
+ft_atoi	lib/libft/ft_atoi.c	/^int	ft_atoi(const char *str0)$/;"	f	typeref:typename:int
+ft_bzero	lib/libft/ft_bzero.c	/^void	*ft_bzero(void *s, size_t n)$/;"	f	typeref:typename:void *
+ft_calloc	lib/libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f	typeref:typename:void *
+ft_errmsg	lib/libft/ft_errmsg.c	/^void	ft_errmsg(char *str)$/;"	f	typeref:typename:void
+ft_free_split	lib/libft/ft_split.c	/^static void	ft_free_split(char **tab)$/;"	f	typeref:typename:void	file:
+ft_intlen	lib/libft/ft_itoa.c	/^static size_t	ft_intlen(long int n)$/;"	f	typeref:typename:size_t	file:
+ft_isalnum	lib/libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f	typeref:typename:int
+ft_isalpha	lib/libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f	typeref:typename:int
+ft_isascii	lib/libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f	typeref:typename:int
+ft_isdigit	lib/libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f	typeref:typename:int
+ft_ismaj	lib/libft/ft_isalpha.c	/^int	ft_ismaj(int c)$/;"	f	typeref:typename:int
+ft_ismin	lib/libft/ft_isalpha.c	/^int	ft_ismin(int c)$/;"	f	typeref:typename:int
+ft_isprint	lib/libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f	typeref:typename:int
+ft_itoa	lib/libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f	typeref:typename:char *
+ft_lstadd_back	lib/libft/ft_lstadd_back.c	/^void	ft_lstadd_back(t_list **lst, t_list *new)$/;"	f	typeref:typename:void
+ft_lstadd_front	lib/libft/ft_lstadd_front.c	/^void	ft_lstadd_front(t_list **lst, t_list *new)$/;"	f	typeref:typename:void
+ft_lstclear	lib/libft/ft_lstclear.c	/^void	ft_lstclear(t_list **lst, void (*del)(void *))$/;"	f	typeref:typename:void
+ft_lstdelone	lib/libft/ft_lstdelone.c	/^void	ft_lstdelone(t_list *lst, void (*del)(void *))$/;"	f	typeref:typename:void
+ft_lstiter	lib/libft/ft_lstiter.c	/^void	ft_lstiter(t_list *lst, void (*f)(void *))$/;"	f	typeref:typename:void
+ft_lstlast	lib/libft/ft_lstlast.c	/^t_list	*ft_lstlast(t_list *lst)$/;"	f	typeref:typename:t_list *
+ft_lstmap	lib/libft/ft_lstmap.c	/^t_list	*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void *))$/;"	f	typeref:typename:t_list *
+ft_lstnew	lib/libft/ft_lstnew.c	/^t_list	*ft_lstnew(void *content)$/;"	f	typeref:typename:t_list *
+ft_lstsize	lib/libft/ft_lstsize.c	/^int	ft_lstsize(t_list *lst)$/;"	f	typeref:typename:int
+ft_memchr	lib/libft/ft_memchr.c	/^void	*ft_memchr(const void *s, int c, size_t n)$/;"	f	typeref:typename:void *
+ft_memcmp	lib/libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f	typeref:typename:int
+ft_memcpy	lib/libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, size_t len)$/;"	f	typeref:typename:void *
+ft_memmove	lib/libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f	typeref:typename:void *
+ft_memrcpy	lib/libft/ft_memmove.c	/^static void	ft_memrcpy(void *dst, const void *src, size_t len)$/;"	f	typeref:typename:void	file:
+ft_memset	lib/libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f	typeref:typename:void *
+ft_putchar_fd	lib/libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f	typeref:typename:void
+ft_putendl_fd	lib/libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f	typeref:typename:void
+ft_putnbr_fd	lib/libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f	typeref:typename:void
+ft_putstr_fd	lib/libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f	typeref:typename:void
+ft_split	lib/libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f	typeref:typename:char **
+ft_strchr	lib/libft/ft_strchr.c	/^char	*ft_strchr(const char *str, int c)$/;"	f	typeref:typename:char *
+ft_strdup	lib/libft/ft_strdup.c	/^char	*ft_strdup(const char *str)$/;"	f	typeref:typename:char *
+ft_striteri	lib/libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f	typeref:typename:void
+ft_strjoin	lib/libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f	typeref:typename:char *
+ft_strlcat	lib/libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)$/;"	f	typeref:typename:size_t
+ft_strlcpy	lib/libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)$/;"	f	typeref:typename:size_t
+ft_strlen	lib/libft/ft_strlen.c	/^size_t	ft_strlen(const char *str)$/;"	f	typeref:typename:size_t
+ft_strmapi	lib/libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f	typeref:typename:char *
+ft_strncmp	lib/libft/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f	typeref:typename:int
+ft_strnlen	lib/libft/ft_strlcat.c	/^static size_t	ft_strnlen(char *s, size_t max)$/;"	f	typeref:typename:size_t	file:
+ft_strnstr	lib/libft/ft_strnstr.c	/^char	*ft_strnstr(const char *str, const char *ndl, size_t len)$/;"	f	typeref:typename:char *
+ft_strrchr	lib/libft/ft_strrchr.c	/^char	*ft_strrchr(char *s, int c)$/;"	f	typeref:typename:char *
+ft_strtrim	lib/libft/ft_strtrim.c	/^char	*ft_strtrim(char const *str, char const *set)$/;"	f	typeref:typename:char *
+ft_substr	lib/libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f	typeref:typename:char *
+ft_tolower	lib/libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f	typeref:typename:int
+ft_toupper	lib/libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f	typeref:typename:int
+ft_wd_count	lib/libft/ft_split.c	/^static int	ft_wd_count(char *str, char sep)$/;"	f	typeref:typename:int	file:
+make_str	lib/libft/ft_itoa.c	/^static void	make_str(long int *n, char *str, int len)$/;"	f	typeref:typename:void	file:
+make_tab	lib/libft/ft_split.c	/^static char	**make_tab(char **ret, char const *s, char sep, unsigned int nb_wd)$/;"	f	typeref:typename:char **	file:
+malloc_len	lib/libft/ft_substr.c	/^size_t	malloc_len(char const *s, unsigned int start, size_t len)$/;"	f	typeref:typename:size_t
+mlx42	lib/MLX42/CMakeLists.txt	/^add_library(mlx42 STATIC$/;"	t
+mlx42	lib/MLX42/CMakeLists.txt	/^project(mlx42 VERSION 2.4.1)$/;"	p
+next	lib/libft/libft.h	/^	struct s_list	*next;$/;"	m	struct:s_list	typeref:struct:s_list *
+re	lib/libft/Makefile	/^re: fclean all$/;"	t
+s_list	lib/libft/libft.h	/^typedef struct s_list$/;"	s
+t_list	lib/libft/libft.h	/^}	t_list;$/;"	t	typeref:struct:s_list
+test	lib/libft/Makefile	/^test:$/;"	t

@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 18:19:05 by supersko          #+#    #+#             */
-/*   Updated: 2024/11/21 17:02:35 by nidionis         ###   ########.fr       */
+/*   Updated: 2024/11/23 17:32:56 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,15 @@
 # define KEY_S 83
 # define KEY_E 69
 # define KEY_D 68
+# define KEY_ESC 256
 
 # define ZOOM_STEP 0.1
-# define WIDTH 1024
-# define HEIGHT 512
-# define DEFAULT_ITER_MAX 42
+# define QUALITY_STEP 1
+# define JULIA_COEF_R_STEP 0.01
+# define JULIA_COEF_I_STEP 0.01
+# define WIDTH 2048
+# define HEIGHT 1024
+# define DEFAULT_ITER_MAX 20
 # define GREEN get_rgba(0, 255, 0, 255)
 # define BLUE get_rgba(0, 0, 255, 255)
 # define RED get_rgba(255, 0, 0, 255)
@@ -75,7 +79,9 @@ typedef struct s_param
 	t_complex	julia_coef;
 	double		zoom;
 	t_pix		offset;
-	void		(*f)(t_data *d, t_pix pix);
+	void		(*f_fract)(t_data *d, t_pix pix);
+	int			(*f_color)(int iter);
+	int			*(*f_color_list)(int iter);
 }	t_param;
 
 #endif
