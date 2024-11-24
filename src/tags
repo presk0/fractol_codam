@@ -1,0 +1,33 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/nidionis/fractol/src/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+colors	julia.c	/^int colors(t_data *data, int iter)$/;"	f	typeref:typename:int
+complex_module	ft_complex.c	/^int	complex_module(t_complex z)$/;"	f	typeref:typename:int
+complex_scale	ft_complex.c	/^t_complex	complex_scale(t_complex z1, double scale)$/;"	f	typeref:typename:t_complex
+complex_square_module	ft_complex.c	/^unsigned	complex_square_module(t_complex p)$/;"	f	typeref:typename:unsigned
+complex_sum	ft_complex.c	/^t_complex	complex_sum(t_complex z1, t_complex z2)$/;"	f	typeref:typename:t_complex
+draw_pixel	ft_pixel.c	/^void	draw_pixel(t_data *data, t_pix pix, int color)$/;"	f	typeref:typename:void
+fractol	main.c	/^int	fractol(t_data *data, char **argv)$/;"	f	typeref:typename:int
+help_msg	main.c	/^static void	help_msg(void)$/;"	f	typeref:typename:void	file:
+init_data	main.c	/^void	init_data(t_data *data, char **argv)$/;"	f	typeref:typename:void
+julia_iter	ft_render.c	/^int	julia_iter(t_data *data, t_complex c)$/;"	f	typeref:typename:int
+loops	main.c	/^int	loops(t_data *data)$/;"	f	typeref:typename:int
+main	main.c	/^int	main(int argc, char *argv[])$/;"	f	typeref:typename:int
+my_keyhook	ft_keyhooks.c	/^void	my_keyhook(mlx_key_data_t keydata, void *data)$/;"	f	typeref:typename:void
+my_scrollhook	ft_keyhooks.c	/^void my_scrollhook(double xdelta, double ydelta, void *data)$/;"	f	typeref:typename:void
+other_keyhooks	ft_keyhooks.c	/^void	other_keyhooks(mlx_key_data_t keydata, void *data)$/;"	f	typeref:typename:void
+pixel_to_complex	ft_pixel.c	/^t_complex	pixel_to_complex(t_data *data, t_pix p)$/;"	f	typeref:typename:t_complex
+prepare_next_frame	ft_render.c	/^void	prepare_next_frame(t_data *data)$/;"	f	typeref:typename:void
+random	julia.c	/^double	random(int n, int a, int b)$/;"	f	typeref:typename:double
+render_julia	julia.c	/^void render_julia(t_data *data, t_pix pix) {$/;"	f	typeref:typename:void
+resize_win	ft_keyhooks.c	/^void resize_win(int width, int height, void *data)$/;"	f	typeref:typename:void
+set_complex	ft_complex.c	/^void	set_complex(t_complex *z, double r, double i)$/;"	f	typeref:typename:void
+set_pix	ft_pixel.c	/^void	set_pix(t_pix *pix, int x, int y)$/;"	f	typeref:typename:void
